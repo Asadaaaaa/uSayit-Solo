@@ -216,7 +216,7 @@ img {
         width: 100%;
         background-color: white;
         border-left: 0.2vw solid black;
-        animation: animate 4s steps(360) infinite;
+        animation: animate 2s steps(360) infinite;
     }
     @keyframes animate{
         40%, 60%{
