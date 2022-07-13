@@ -43,7 +43,7 @@
                 <h1>You can send messages such as</h1>
             </div>
             <div data-aos="fade-up" data-aos-duration="1000" class="animation">
-                <p id="textAnimation">Inform</p>
+                <p id="textAnimation">Information</p>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@
 
         const textAnimation = () => {
             const text = document.getElementById("textAnimation");
-            let textAnimList = ['Inform', 'Advice', 'Confess', 'Jokes', 'Asking', 'News', 'Quote', 'Gossip', 'Compliment', 'Poetry', 'Campaign', 'Offend', 'Poem', 'Entertain', 'Help', 'Fact', 'Notify', 'Offer', 'Praise', 'Recommend', 'Tell', 'Justify', 'Suggest'];
+            let textAnimList = ['Information', 'Advice', 'Confess', 'Jokes', 'Asking', 'News', 'Quote', 'Gossip', 'Compliment', 'Poetry', 'Campaign', 'Offend', 'Poem', 'Entertain', 'Help', 'Fact', 'Notify', 'Offer', 'Praise', 'Recommend', 'Tell', 'Justify', 'Suggest'];
             let curIndex = 1;
             let totalIndex = textAnimList.length - 1;
 
@@ -151,7 +151,7 @@
 
                 text.innerHTML = textAnimList[curIndex];
                 curIndex++
-            }, 4000);
+            }, 2000);
         }
 
         textAnimation();
