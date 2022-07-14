@@ -370,11 +370,14 @@
     .section-5 .form .header h1 {
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 900;
-        font-size: 30px;
+        font-size: 7vw;
 
         text-align: center;
 
         margin-top: 15px;
+
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 
     .section-5 .form .header p {
@@ -384,7 +387,9 @@
 
         text-align: center;
         margin-top: 10px;
-        
+
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 
     .section-5 .form .input .form-input {
