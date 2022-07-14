@@ -8,7 +8,10 @@
     <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
     <title>uSay!t</title>
 
+    <link rel="stylesheet" href="assets/css/home/Global.css?refreshcss=1">
     <link rel="stylesheet" href="assets/css/home/Mobile.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/home/Tablet.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/home/Desktop.css?refreshcss=1">
     <link rel="stylesheet" href="assets/library/icomoon/style.css">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,11 +19,11 @@
 <body>
     <div class="section-1">
         <div data-aos="fade-down" data-aos-duration="1000" class="header">
-            <img id="logo" src="assets/img/logo.png" alt="">
+            <a href="" class="spin"></a><img id="logo" src="assets/img/logo.png" alt="">
         </div>
         <div data-aos="fade-up" data-aos-duration="1500" class="description">
             <h1>IMAGINE A PLACE...</h1>
-            <p>...where you can say whatever you want, and the message is Anonymous, just by doing one click and then it will be sent to various social media that are available on uSay!t</p>
+            <p>...where you can say whatever you want, and the message is Anonymous, just by doing one click and then it will be sent to various social media that are available on uSayit</p>
         </div>
 
         <div data-aos="fade-up" data-aos-duration="2000" class="button">
@@ -43,7 +46,7 @@
                 <h1>You can send messages such as</h1>
             </div>
             <div data-aos="fade-up" data-aos-duration="1000" class="animation">
-                <p id="textAnimation">Information</p>
+                <p id="textAnimation">Suggest</p>
             </div>
         </div>
     </div>
@@ -54,7 +57,7 @@
                 <img data-aos="fade-down" data-aos-duration="1000" src="assets/img/keepsafe.png" alt="">
             </div>
             <div class="desc">
-                <p data-aos="fade-up" data-aos-duration="1000">We expected that users comply with the terms of service policy on each social media platform that we provide. To ensure safety on uSayit, we filter some words that are harsh, offensive, harmful or bullying. Then our system stores users personal data in case of a violation. Posts will also be deleted automatically by the system if include a violation.</p>
+                <p data-aos="fade-up" data-aos-duration="1000">We expected that users comply with the terms of service policy on each social media platform that we provide. To ensure safety on uSayit, we filter some words that are harsh, offensive, harmful or bullying. The system stores users personal data in case of a violation. Posts will also be deleted automatically by the system if include a violation.</p>
             </div>
         </div>
     </div>
@@ -117,7 +120,7 @@
             <div data-aos="fade-up" data-aos-duration="1000" class="form">
                 <div class="header">
                     <h1 data-aos="fade-down" data-aos-duration="1500">Send Feedback</h1>
-                    <p data-aos="fade-up" data-aos-duration="2000">send feedback to support uSay!t to be better</p>
+                    <p data-aos="fade-up" data-aos-duration="2000">send feedback to support uSayit to be better</p>
                 </div>
                 <div class="input">
                     <input type="text" autocomplete="off" class="form-input" placeholder="Type your feedback here...">
@@ -140,7 +143,7 @@
 
         const textAnimation = () => {
             const text = document.getElementById("textAnimation");
-            let textAnimList = ['Information', 'Advice', 'Confess', 'Jokes', 'Asking', 'News', 'Quote', 'Gossip', 'Compliment', 'Poetry', 'Campaign', 'Offend', 'Poem', 'Entertain', 'Help', 'Fact', 'Notify', 'Offer', 'Praise', 'Recommend', 'Tell', 'Justify', 'Suggest'];
+            let textAnimList = ['Advice', 'Jokes', 'Asking', 'News', 'Confess', 'Quote', 'Gossip', 'Offend', 'Poem', 'Offer', 'Justify', 'Suggest'];
             let curIndex = 1;
             let totalIndex = textAnimList.length - 1;
 

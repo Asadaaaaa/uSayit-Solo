@@ -1,21 +1,21 @@
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 577px) and (max-width: 768px) {
     .section-1 {
         background: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);
         text-align: center;
-        padding-bottom: 25vw;
     }
 
     .section-1 .header #logo {
-        max-width: 30vw;
+        max-width: 20vmax;
+        min-width: 10vmax;
 
-        margin-top: 10vw;
+        margin-top: 5vw;
         height: auto;
     }
 
     .section-1 .description {
-        width: 90vw;
+        width: 80vw;
         
-        margin-top: 15vw;
+        margin-top: 5vw;
         margin-left: auto;
         margin-right: auto;
         
@@ -24,7 +24,7 @@
     .section-1 .description h1 {
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 900;
-        font-size: 8.3vw;
+        font-size: 5vw;
         text-shadow: 0.5px 0.5px 3px #DC92FF;
         color: white;
     }
@@ -41,7 +41,7 @@
     }
 
     .section-1 .button {
-        margin-top: 15vw;
+        margin-top: 13vw;
         margin-bottom: 1vw;
     }
 
@@ -68,7 +68,9 @@
     .section-1 .platforms {
         width: 90vw;
 
-        margin-top: 20vw;
+        margin-top: 15vw;
+        padding-bottom: 13vw;
+
         margin-left: auto;
         margin-right: auto;
     }
@@ -159,13 +161,13 @@
     .section-2 .content {
         text-align: center;
         
-        padding-top: 25vw;
-        padding-bottom: 25vw;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
 
         margin-left: auto;
         margin-right: auto;
 
-        width: 90vw;
+        width: 70vw;
     }
 
     .section-2 h1 {
@@ -178,7 +180,7 @@
     }
 
     .section-2 .animation {
-        width: 45vw;
+        width: 250px;
 
         position: relative;
         
@@ -190,7 +192,7 @@
         
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 500;
-        font-size: 10vw;
+        font-size: 50px;
 
         overflow: hidden;
     }
@@ -203,12 +205,12 @@
         height: 100%;
         width: 100%;
         background-color: white;
-        border-left: 0.7vw solid darkgray;
+        border-left: 4px solid darkgray;
         animation: animate 2s steps(180) infinite;
     }
     @keyframes animate{
         40%, 60%{
-            left: calc(90% + 3vw);
+            left: calc(90% + 15px);
         }
         100%{
             left: 0%;
@@ -220,10 +222,10 @@
     }
 
     .section-3 .content {
-        width: 90vw;
+        width: 80vw;
         
-        padding-top: 25vw;
-        padding-bottom: 25vw;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
 
         margin-left: auto;
         margin-right: auto;
@@ -232,7 +234,7 @@
     }
 
     .section-3 .header img {
-        max-width: 90vw;
+        max-width: 65vw;
         height: auto;
     }
 
@@ -250,10 +252,10 @@
     }
 
     .section-4 .content {
-        width: 90vw;
+        width: 70vw;
 
-        padding-top: 25vw;
-        padding-bottom: 25vw;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
 
         margin-left: auto;
         margin-right: auto;
@@ -262,7 +264,7 @@
     .section-4 .header img {
         display: block;
         
-        max-width: 50vw;
+        max-width: 230px;
         height: auto;
         
         margin-left: auto;
@@ -351,15 +353,15 @@
     }
 
     .section-5 .content {
-        padding-top: 25vw;
-        padding-bottom: 25vw;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
     }
 
     .section-5 .form {
-        width: 80vw;
+        width: 400px;
 
         border: 0.5px black solid;
-        border-radius: 8vw;
+        border-radius: 40px;
         background: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);;
         box-shadow: 5px 5px 3px #000000;
 
@@ -390,8 +392,8 @@
     .section-5 .form .input .form-input {
         display: block;
         
-        width: 65vw;
-        height: 6vw;
+        width: 325px;
+        height: 35px;
 
         border: 0.2vw white solid;
         border-radius: 5vw;
@@ -462,7 +464,7 @@
     }
 
     .footer .content img {
-        width: 16vw;
+        width: 80px;
     }
 
     .footer .content p {
