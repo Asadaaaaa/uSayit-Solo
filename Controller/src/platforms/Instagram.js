@@ -31,7 +31,7 @@ class Instagram {
 
         this.client = new instagram({username, password, cookieStore});
 
-        await this.client.login().then(() => {
+        await this.client.login({}, {_sharedData: false}).then(() => {
 
             console.log('(Instagram): Platform Status \x1b[93mEnabled\x1b[0m | Login as ' + username);
 
