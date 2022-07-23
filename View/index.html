@@ -167,10 +167,10 @@
                         <p>who built uSay!t?</p>
                     </li>
                     <li class="answer">
-                        <p>uSay!t is built by software engineer student. you can see the developer profile on the credits
+                        <p>uSay!t is built by designer and engineer. you can see the developer profile on the credits
                             page.</p>
                         <div class="button">
-                            <a href="https://github.com/Asadaaaaa" target="_blank" id="button">Credits Page</a>
+                            <a id="button">Credits Page</a>
                         </div>
                     </li>
                 </ul>
@@ -223,6 +223,8 @@
 
         textAnimation();
 
+        let text = 'sebenernya あくすか さま かむ tapi かむ ga ぺか :('
+
         let sendBtn = document.getElementById('send-btn');
         let popupFeedback = document.getElementById('popup-feedback');
         let loadingFeedback = document.getElementById('loading-feedback');
@@ -231,34 +233,26 @@
 
         sendBtn.addEventListener('click', () => {
             let feedbackTxt = document.getElementById('feedback-text').value;
-            let apiURI = 'https://usayit-api.herokuapp.com/api/sendFeedback?data='
-
-            let dataObj = {
-                text: feedbackTxt,
-            }
-            let dataEncode = btoa(JSON.stringify(dataObj));
-
-            let apiURIparam = apiURI + dataEncode;
+            let apiURI = 'https://usayit-api.herokuapp.com/api/sendFeedback';
 
             popupFeedback.style.display = 'block';
             loadingFeedback.style.display = 'block';
 
-            axios.post(apiURIparam).then(res => {
-                
-                if (res.data.errorCode !== -1) {
-                    loadingFeedback.style.display = 'none';
-                    failedFeedback.style.display = 'block';
+            axios.post(apiURI, {
 
-                    return;
-                }
+                text: feedbackTxt,
+
+            }).then(res => {
 
                 loadingFeedback.style.display = 'none';
                 successFeedback.style.display = 'block';
 
                 return;
             }).catch(err => {
+
                 loadingFeedback.style.display = 'none';
                 failedFeedback.style.display = 'block';
+
             });
 
             return;
