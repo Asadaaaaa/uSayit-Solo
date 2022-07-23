@@ -31,7 +31,7 @@ class Main {
     }
 
     runAPI() {
-        
+
         const api = this.api;
 
         api.use((req, res, next) => {
@@ -146,12 +146,12 @@ class Main {
             return;
         });
         
-        api.get('/api/igPreview', async (req, res) => {
+        api.post('/api/igPreview', async (req, res) => {
             
             let previewTxt = req.body.text;
 
             if(typeof previewTxt !== 'string' || previewTxt.length < 6 || previewTxt.length > 270) {
-        
+                
                 res.status(405).json({
                     
                     statusCode: 405,
@@ -220,7 +220,7 @@ class Main {
                     description: 'Text not valid'
 
                 });
-                console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 400 Bad Request\nDescription: Text not valid');
+                console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 405 Method Not Allowed\nDescription: Text not valid');
         
                 return;
             }
