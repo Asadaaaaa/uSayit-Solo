@@ -84,10 +84,10 @@ class Main {
             }
 
             let messageTxtSplt = messageTxt.split(' ');
-            let char = messageTxt.split();
+            let char = messageTxt.split('');
 
-            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,./;\'[]\\-=_+{}:"<>?';
-            let accCharArr = accCharacters.split();
+            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,./;\'[]\\-=_+{}:"<>?';
+            let accCharArr = accCharacters.split('');
 
             let isLengthValid = true;
             let isInvalidChar = false;
@@ -206,10 +206,10 @@ class Main {
             }
         
             let previewTxtSplt = previewTxt.split(' ');
-            let char = previewTxt.split();
+            let char = previewTxt.split('');
 
-            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,./;\'[]\\-=_+{}:"<>?';
-            let accCharArr = accCharacters.split();
+            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,./;\'[]\\-=_+{}:"<>?';
+            let accCharArr = accCharacters.split('');
 
             let isLengthValid = true;
             let isInvalidChar = false;
