@@ -33,75 +33,57 @@ class Main {
     runAPI() {
         const api = this.api;
 
-        api.use(function (req, res, next) {
+        
 
-            // Website you wish to allow to connect
+        api.use((err, req, res, next) => {
+            
             res.setHeader('Access-Control-Allow-Origin', '*');
-        
-            // Request methods you wish to allow
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-        
-            // Request headers you wish to allow
             res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-        
-            // Set to true if you need the website to include cookies in the requests sent
-            // to the API (e.g. in case you use sessions)
             res.setHeader('Access-Control-Allow-Credentials', true);
-        
-            // Pass to next layer of middleware
-            next();
-        });
-        
 
-        api.post('/api/sendMessage', async (req, res) => {
-            let queryData = req.query.data;
+            next();
+
+            return;
+        });
+
+        api.use(express.json());
+
+        api.use((err, req, res, next) => {
             
-            if(queryData === undefined || queryData === "" || queryData.length <= 10) {
-                
-                res.status(400).json({
+            if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+
+                return res.status(400).json({
                     statusCode: 400, 
-                    errorCode: 1, 
-                    description: 'Query data not valid'
-                });
-                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 400 Bad Request\nDescription: Query data not valid');
-        
-                return;
-            }
-        
-            let queryDataDec = Buffer(queryData, 'base64').toString('utf8');
-            
-            try {
-        
-                var queryDataObj = JSON.parse(queryDataDec);
-        
-            } catch (err) {
-        
-                res.status(400).json({
-                    statusCode: 400, 
-                    errorCode: 2, 
+                    resCode: 'middleware-1', 
                     description: 'Unable to json parsing'
                 });
-                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 400 Bad Request\nDescription: Unable to json parsing');
-        
-                return;
             }
-            
-            let messageTxt = queryDataObj.text;
-            let isInstagram = queryDataObj.instagram;
-            let isTwitter = queryDataObj.twitter;
+
+            next();
+
+            return;
+        })
+        
+        api.post('/api/sendMessage', async (req, res) => {
+
+            let messageTxt = req.body.text;
+            let isInstagram = req.body.instagram;
+            let isTwitter = req.body.twitter;
+            let timestamp = new Date().getTime();
         
             if(typeof messageTxt !== 'string' || messageTxt.length < 6 || messageTxt.length > 270) {
         
                 res.status(405).json({
-                    statusCode: 400, 
-                    errorCode: 3, 
-                    description: 'Text not valid'
+                    statusCode: 405, 
+                    resCode: 'sendMessage-1', 
+                    description: err.message
                 });
-                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 400 Bad Request\nDescription: Text not valid');
+                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 405 Method Not Allowed\nDescription: Text not valid');
         
                 return;
             }
-        
+
             let messageTxtSplt = messageTxt.split(' ');
             let isLengthValid = true;
         
@@ -120,16 +102,25 @@ class Main {
         
                 res.status(405).json({
                     statusCode: 405, 
-                    errorCode: 4, 
+                    resCode: 'sendMessage-2', 
                     description: 'Text not valid, Maximum 25 char per words'
                 });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Bad Request\nDescription: Text not valid, Maximum 25 char per words');
+                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Text not valid, Maximum 25 char per words');
                 
                 return;
             }
 
-            let timestamp = new Date().getTime();
+            if(isInstagram !== true && isTwitter !== true) {
 
+                res.status(405).json({
+                    statusCode: 405,
+                    resCode: 'sendMessage-3', 
+                    description: 'No platforms found'
+                });
+                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: No platform found');
+
+                return;
+            }
 
             if(isInstagram) {
 
@@ -145,10 +136,12 @@ class Main {
             }
 
             res.status(200).json({
+
                 statusCode: 200, 
-                errorCode: -1, 
+                resCode: 'sendMessage-OK', 
                 description: 'OK'
-            });;
+
+            });
             console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 200 OK\nDescription: Succesfully sent feedback');
         
             return;
@@ -156,48 +149,18 @@ class Main {
         
         api.get('/api/igPreview', async (req, res) => {
             
-            let queryData = req.query.data;
-            
-            if(queryData === undefined || queryData === "" || queryData.length <= 10) {
-        
-                res.status(400).json({
-                    statusCode: 400, 
-                    errorCode: 1, 
-                    description: 'Query data not valid'
-                });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 400 Bad Request\nDescription: Query data not valid');
-        
-                return;
-            }
-        
-            
-            let queryDataDec = Buffer(queryData, 'base64').toString('utf8');
-            let queryDataObj;
-            try {
-        
-                queryDataObj = JSON.parse(queryDataDec);
-        
-            } catch (err) {
-        
-                res.status(400).json({
-                    statusCode: 400, 
-                    errorCode: 2, 
-                    description: 'Unable to json parsing'
-                });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 400 Bad Request\nDescription: Unable to json parsing');
-        
-                return;
-            }
-            
-            let previewTxt = queryDataObj.text;
+            let previewTxt = req.body.text;
+
             if(typeof previewTxt !== 'string' || previewTxt.length < 6 || previewTxt.length > 270) {
         
                 res.status(405).json({
-                    statusCode: 405, 
-                    errorCode: 3, 
+                    
+                    statusCode: 405,
+                    resCode: 'igPreview-1',
                     description: 'Text not valid'
+                    
                 });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Bad Request\nDescription: Text not valid');
+                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Text not valid');
         
                 return;
             }
@@ -219,11 +182,13 @@ class Main {
             if(!isLengthValid) {
         
                 res.status(405).json({
+
                     statusCode: 405, 
-                    errorCode: 4, 
+                    resCode: 'igPreview-2', 
                     description: 'Text not valid, Maximum 25 char per words'
+
                 });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Bad Request\nDescription: Text not valid, Maximum 25 char per words');
+                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Text not valid, Maximum 25 char per words');
                 
                 return;
             }
@@ -231,10 +196,11 @@ class Main {
             let image = await new ImageManipulation().preview(previewTxt);
             
             res.status(200).json({
+
                 statusCode: 200, 
-                errorCode: -1, 
-                description: 'OK',
+                resCode: 'igPreview-OK',
                 image: image
+
             });
         
             console.log('\n\nEnd-Point: /api/igPreview\nStatus: 200 OK\nDescription: Succesfully show preview');
@@ -244,46 +210,16 @@ class Main {
         
         api.post('/api/sendFeedback', async (req, res) => {
             
-            let queryData = req.query.data;
-            
-            if(queryData === undefined || queryData === "" || queryData.length <= 10) {
-        
-                res.status(400).json({
-                    statusCode: 400, 
-                    errorCode: 1, 
-                    description: 'Query data not valid'
-                });
-                console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 400 Bad Request\nDescription: Query data not valid');
-        
-                return;
-            }
-        
-            let queryDataDec = Buffer(queryData, 'base64').toString('utf8');
-            
-            try {
-        
-                var queryDataObj = JSON.parse(queryDataDec);
-        
-            } catch (err) {
-        
-                res.status(400).json({
-                    statusCode: 400, 
-                    errorCode: 2, 
-                    description: 'Unable to json parsing'
-                });;
-                console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 400 Bad Request\nDescription: Unable to json parsing');
-        
-                return;
-            }
-            
-            let feedbackTxt = queryDataObj.text;
+            let feedbackTxt = req.body.text;
         
             if(typeof feedbackTxt !== 'string' || feedbackTxt.length <= 5 || feedbackTxt.length > 314) {
         
                 res.status(405).json({
-                    statusCode: 405, 
-                    errorCode: 3, 
+
+                    statusCode: 405,
+                    resCode: 'sendFeedback-1',
                     description: 'Text not valid'
+
                 });
                 console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 400 Bad Request\nDescription: Text not valid');
         
@@ -293,10 +229,12 @@ class Main {
             this.discord.sendFeedback(feedbackTxt);
         
             res.status(200).json({
+
                 statusCode: 200, 
-                errorCode: -1, 
+                resCode: 'sendFeedback-OK', 
                 description: 'OK'
-            });;
+
+            });
             console.log('\n\nEnd-Point: /api/sendFeedback\nStatus: 200 OK\nDescription: Succesfully sent feedback');
             
             return;
@@ -304,6 +242,7 @@ class Main {
         
         api.listen(process.env.PORT || 3000)
         console.log("Server Running");
+
         return;
     }
 
