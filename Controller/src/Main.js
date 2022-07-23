@@ -31,9 +31,8 @@ class Main {
     }
 
     runAPI() {
-        const api = this.api;
-
         
+        const api = this.api;
 
         api.use((req, res, next) => {
             
