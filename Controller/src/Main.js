@@ -55,7 +55,7 @@ class Main {
                 return res.status(400).json({
                     statusCode: 400, 
                     resCode: 'middleware-1', 
-                    description: 'Unable to json parsing'
+                    description: err.message
                 });
             }
 
@@ -76,7 +76,7 @@ class Main {
                 res.status(405).json({
                     statusCode: 405, 
                     resCode: 'sendMessage-1', 
-                    description: err.message
+                    description: 'Text not valid'
                 });
                 console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 405 Method Not Allowed\nDescription: Text not valid');
         
@@ -84,7 +84,13 @@ class Main {
             }
 
             let messageTxtSplt = messageTxt.split(' ');
+            let char = messageTxt.split();
+
+            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,./;\'[]\\-=_+{}:"<>?';
+            let accCharArr = accCharacters.split();
+
             let isLengthValid = true;
+            let isInvalidChar = false;
         
             messageTxtSplt.forEach((val, idx, arr) => {
         
@@ -96,6 +102,29 @@ class Main {
                 }
         
             });
+
+            char.forEach((val, idx, arr) => {
+
+                let charFound = false;
+
+                accCharArr.forEach((val2, idx2, arr2) => {
+
+                    if(val === val2) {
+
+                        charFound = true;
+
+                    }
+
+                });
+
+                if(!charFound) {
+
+                    isInvalidChar = true;
+
+                    return;
+                }
+
+            });
         
             if(!isLengthValid) {
         
@@ -104,8 +133,20 @@ class Main {
                     resCode: 'sendMessage-2', 
                     description: 'Text not valid, Maximum 25 char per words'
                 });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Text not valid, Maximum 25 char per words');
+                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 405 Method Not Allowed\nDescription: Text not valid, Maximum 25 char per words');
                 
+                return;
+            } else if (isInvalidChar) {
+
+                res.status(405).json({
+
+                    statusCode: 405, 
+                    resCode: 'sendMessage-3', 
+                    description: 'Invalid Character'
+
+                });
+                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 405 Method Not Allowed\nDescription: Invalid character');
+
                 return;
             }
 
@@ -116,7 +157,7 @@ class Main {
                     resCode: 'sendMessage-3', 
                     description: 'No platforms found'
                 });
-                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: No platform found');
+                console.log('\n\nEnd-Point: /api/sendMessage\nStatus: 405 Method Not Allowed\nDescription: No platform found');
 
                 return;
             }
@@ -165,7 +206,13 @@ class Main {
             }
         
             let previewTxtSplt = previewTxt.split(' ');
+            let char = previewTxt.split();
+
+            let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,./;\'[]\\-=_+{}:"<>?';
+            let accCharArr = accCharacters.split();
+
             let isLengthValid = true;
+            let isInvalidChar = false;
         
             previewTxtSplt.forEach((val, idx, arr) => {
         
@@ -176,6 +223,29 @@ class Main {
                     return;
                 }
         
+            });
+
+            char.forEach((val, idx, arr) => {
+
+                let charFound = false;
+
+                accCharArr.forEach((val2, idx2, arr2) => {
+
+                    if(val === val2) {
+
+                        charFound = true;
+
+                    }
+
+                });
+
+                if(!charFound) {
+
+                    isInvalidChar = true;
+
+                    return;
+                }
+
             });
         
             if(!isLengthValid) {
@@ -189,6 +259,18 @@ class Main {
                 });
                 console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Text not valid, Maximum 25 char per words');
                 
+                return;
+            } else if (isInvalidChar) {
+
+                res.status(405).json({
+
+                    statusCode: 405, 
+                    resCode: 'sendMessage-3', 
+                    description: 'Invalid Character'
+
+                });
+                console.log('\n\nEnd-Point: /api/igPreview\nStatus: 405 Method Not Allowed\nDescription: Invalid character');
+
                 return;
             }
         
