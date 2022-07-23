@@ -149,8 +149,8 @@
 
         let warn = document.getElementById('warn-txt');
 
-        let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,./;\'[]\\-=_+{}:"<>?';
-        let accCharArr = accCharacters.split();
+        let accCharacters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,./;\'[]\\-=_+{}:"<>?';
+        let accCharArr = accCharacters.split('');
 
         const imagePreview = () => {
 
@@ -161,7 +161,7 @@
 
                 let getMessage = document.getElementById('message-input').value;
                 let words = getMessage.split(' ');
-                let char = getMessage.split();
+                let char = getMessage.split('');
                 let isWordLengthValid = true;
                 let isInvalidChar = false;
 
@@ -179,7 +179,7 @@
                 char.forEach((val, idx, arr) => {
 
                     let charFound = false;
-
+                    
                     accCharArr.forEach((val2, idx2, arr2) => {
 
                         if(val === val2) {
