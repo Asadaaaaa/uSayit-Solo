@@ -150,7 +150,7 @@
         const imagePreview = () => {
 
             let msgPreview;
-            let apiURI = 'https://usayit-api.herokuapp.com/api/igPreview?data=';
+            let apiURI = 'https://usayit-api.herokuapp.com/api/igPreview';
 
             let syncronize = setInterval(async () => {
 
@@ -184,7 +184,7 @@
                     loadingPrev.style.display = 'block';
 
                     return;
-                } else if(isWordLengthValid === false) {
+                } else if (isWordLengthValid === false) {
 
                     document.getElementById('prev-img').src = '';
                     loadingPrev.style.display = 'block';
@@ -197,18 +197,18 @@
 
                 msgPreview = getMessage;
 
-                let apiURIparam = apiURI + btoa(JSON.stringify({
-
+                axios.post(apiURI, {
                     text: msgPreview
-
-                }));
-
-                axios.get(apiURIparam).then(res => {
+                }).then(res => {
 
                     document.getElementById('prev-img').src = res.data.image;
                     loadingPrev.style.display = 'none';
 
-                }).catch();
+                }).catch((err) => {
+
+                    console.log(err.data)
+
+                });
 
                 return;
             }, 3000);
@@ -255,7 +255,7 @@
             let words = message.split(' ');
             let isWordLengthValid = true;
             let warn = document.getElementById('warn-txt');
-            let apiURI = 'https://usayit-api.herokuapp.com/api/sendMessage?data=';
+            let apiURI = 'https://usayit-api.herokuapp.com/api/sendMessage';
 
             let dataObj = {
                 text: message,
@@ -313,14 +313,13 @@
             popupPost.style.display = 'block';
             loadingPost.style.display = 'block';
 
-            axios.post(apiURIparam).then(res => {
+            axios.post(apiURI, {
 
-                if (res.data.errorCode !== -1) {
-                    loadingPost.style.display = 'none';
-                    failedPost.style.display = 'block';
+                text: message,
+                instagram: igBtnClicked,
+                twitter: twtBtnClicked
 
-                    return;
-                }
+            }).then(res => {
 
                 loadingPost.style.display = 'none';
                 successPost.style.display = 'block';
@@ -338,7 +337,12 @@
                 }
 
                 return;
-            }).catch();
+            }).catch((err) => {
+
+                loadingPost.style.display = 'none';
+                failedPost.style.display = 'block';
+
+            });
 
             return;
         });
