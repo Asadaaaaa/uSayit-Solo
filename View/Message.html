@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+    <title>uSay!t</title>
+
+    <link rel="stylesheet" href="assets/library/icomoon/style.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/message/Global.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/message/Mobile.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/message/Tablet.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/message/Desktop.css?refreshcss=1">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+        integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="popup-post" id="popup-post">
+        <div class="content">
+            <div class="form">
+                <div class="loading" id="loading-post">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="desc">
+                        <p>Posting...</p>
+                    </div>
+                </div>
+
+                <div class="success" id="success-post">
+                    <svg id="check-mark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <div class="desc">
+                        <h2>Success</h2>
+                        <p>Check the post by pressing the button below</p>
+                    </div>
+                    <div class="platforms-button">
+                        <a href="https://www.instagram.com/usayit.id/" target="_blank" id="instagram-btn-success"
+                            class="icon-">instagram</a>
+                        <a href="https://twitter.com/usayit_id" target="_blank" id="twitter-btn-success"
+                            class="icon-">twitter</a>
+                    </div>
+                    <div class="reload-button">
+                        <a href="Message.html" id="reload-btn">Send Again</a>
+                    </div>
+                </div>
+                <div class="failed" id="failed-post">
+                    <svg id="cross-mark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                            stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                            stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                    </svg>
+                    <div class="desc">
+                        <h2>Failed</h2>
+                        <p>Message failed to post, you can try again</p>
+                    </div>
+                    <div class="reload-button">
+                        <a href="Message.html" id="reload-btn">Try Again</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="content">
+            <img src="assets/img/logo.png" alt="">
+            <a href="index.html" id="home-btn" class="icon-">home</a>
+        </div>
+    </nav>
+
+    <div class="section-1">
+        <div class="content">
+            <div class="form-message">
+                <div class="header">
+                    <h2>Say It</h2>
+                    <p>Enter the message below</p>
+                </div>
+                <div class="message">
+                    <input type="text" autocomplete="off" id="message-input" placeholder="Type your message here...">
+                </div>
+                <div class="platforms">
+                    <div class="header">
+                        <p>Choose Platforms:</p>
+                    </div>
+                    <div class="button">
+                        <span id="twitter-icon" class="icon-">twitter</span>
+                        <span id="instagram-icon" class="icon-">instagram</span>
+                    </div>
+                </div>
+                <div class="ig-preview" id="ig-preview">
+                    <div class="header">
+                        <p>Instagram Preview:</p>
+                    </div>
+                    <div class="preview">
+                        <div class="spinner-box" id="loading-prev">
+                            <div class="three-quarter-spinner"></div>
+                        </div>
+                        <img id="prev-img" src="" alt="">
+                    </div>
+                </div>
+                <div class="warn">
+                    <p id="warn-txt"></p>
+                </div>
+            </div>
+
+            <div class="submit">
+                <span id="submit-btn">Post</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let instagramBtn = document.getElementById('instagram-icon');
+        let igPreview = document.getElementById('ig-preview');
+        let loadingPrev = document.getElementById('loading-prev');
+        let imagePrev = document.getElementById('prev-img');
+        let igBtnClicked = false;
+
+        let twitterBtn = document.getElementById('twitter-icon');
+        let twtBtnClicked = false;
+
+        let postBtn = document.getElementById('submit-btn');
+        let isPosting = false;
+
+        let popupPost = document.getElementById('popup-post');
+        let loadingPost = document.getElementById('loading-post');
+        let successPost = document.getElementById('success-post');
+        let failedPost = document.getElementById('failed-post');
+
+        let successPostIG = document.getElementById('instagram-btn-success');
+        let successPostTwt = document.getElementById('twitter-btn-success');
+
+        const imagePreview = () => {
+
+            let msgPreview;
+            let apiURI = 'https://usayit-api.herokuapp.com/api/igPreview?data=';
+
+            let syncronize = setInterval(async () => {
+
+                let getMessage = document.getElementById('message-input').value;
+                let words = getMessage.split(' ');
+                let isWordLengthValid = true;
+
+                words.forEach((val, idx, arr) => {
+
+                    if (val.length > 25) {
+
+                        isWordLengthValid = false;
+
+                        return;
+                    }
+
+                });
+
+                if (getMessage === '') {
+
+                    document.getElementById('prev-img').src = '';
+                    loadingPrev.style.display = 'block';
+
+                    return;
+                } else if (msgPreview === getMessage) {
+
+                    return;
+                } else if (getMessage.length < 6) {
+
+                    document.getElementById('prev-img').src = '';
+                    loadingPrev.style.display = 'block';
+
+                    return;
+                } else if(isWordLengthValid === false) {
+
+                    document.getElementById('prev-img').src = '';
+                    loadingPrev.style.display = 'block';
+
+                    return;
+                } else if (igBtnClicked === false) {
+
+                    return;
+                }
+
+                msgPreview = getMessage;
+
+                let apiURIparam = apiURI + btoa(JSON.stringify({
+
+                    text: msgPreview
+
+                }));
+
+                axios.get(apiURIparam).then(res => {
+
+                    document.getElementById('prev-img').src = res.data.image;
+                    loadingPrev.style.display = 'none';
+
+                }).catch();
+
+                return;
+            }, 3000);
+        }
+        imagePreview();
+
+        instagramBtn.addEventListener('click', () => {
+            if (igBtnClicked === false) {
+
+                igBtnClicked = true;
+
+                instagramBtn.style.backgroundColor = '#DC92FF';
+                instagramBtn.style.color = 'white';
+                igPreview.style.display = 'block';
+
+            } else if (igBtnClicked === true) {
+
+                igBtnClicked = false;
+
+                instagramBtn.style.backgroundColor = '#FFFFFF';
+                instagramBtn.style.color = 'black';
+                igPreview.style.display = 'none';
+
+            }
+        });
+
+        /* twitterBtn.addEventListener('click', () => {
+            if(twtBtnClicked === false) {
+                twtBtnClicked = true;
+
+                twitterBtn.style.backgroundColor = '#DC92FF';
+                twitterBtn.style.color = 'white';
+            } else if(twtBtnClicked === true) {
+                twtBtnClicked = false;
+
+                twitterBtn.style.backgroundColor = 'white';
+                twitterBtn.style.color = 'black';
+            }
+        }); */
+
+        postBtn.addEventListener('click', () => {
+
+            let message = document.getElementById('message-input').value;
+            let words = message.split(' ');
+            let isWordLengthValid = true;
+            let warn = document.getElementById('warn-txt');
+            let apiURI = 'https://usayit-api.herokuapp.com/api/sendMessage?data=';
+
+            let dataObj = {
+                text: message,
+                instagram: igBtnClicked,
+                twitter: twtBtnClicked
+            }
+            let dataEncode = btoa(JSON.stringify(dataObj));
+
+            let apiURIparam = apiURI + dataEncode;
+
+            words.forEach((val, idx, arr) => {
+
+                if (val.length > 25) {
+
+                    isWordLengthValid = false;
+
+                    return;
+                }
+
+            });
+
+            if (message === '') {
+
+                warn.textContent = 'Message can\'t be empty!';
+
+                return;
+            } else if (message.length < 6) {
+
+                warn.textContent = 'Your message is to short!';
+
+                return;
+            } else if (message.length > 270) {
+
+                warn.textContent = 'Your message is to long!';
+
+                return;
+            } else if (isWordLengthValid === false) {
+
+                warn.textContent = 'There are long words!';
+
+                return;
+            } else if (igBtnClicked === false && twtBtnClicked === false) {
+
+                warn.textContent = 'You have to choose a platform!';
+
+                return;
+            } else if (isPosting === true) {
+
+                return;
+            }
+
+            isPosting = true;
+
+
+            popupPost.style.display = 'block';
+            loadingPost.style.display = 'block';
+
+            axios.post(apiURIparam).then(res => {
+
+                if (res.data.errorCode !== -1) {
+                    loadingPost.style.display = 'none';
+                    failedPost.style.display = 'block';
+
+                    return;
+                }
+
+                loadingPost.style.display = 'none';
+                successPost.style.display = 'block';
+
+                if (igBtnClicked) {
+
+                    successPostIG.style.display = 'inline-block';
+
+                }
+
+                if (twtBtnClicked) {
+
+                    successPostTwt.style.display = 'inline-block';
+
+                }
+
+                return;
+            }).catch();
+
+            return;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+    <title>uSay!t</title>
+
+    <link rel="stylesheet" href="assets/css/home/Global.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/home/Mobile.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/home/Tablet.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/css/home/Desktop.css?refreshcss=1">
+    <link rel="stylesheet" href="assets/library/icomoon/style.css?refreshcss=1">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+        integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="popup-feedback" id="popup-feedback">
+        <div class="content">
+            <div class="form">
+                <div class="loading" id="loading-feedback">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="desc">
+                        <p>Sending Feedback...</p>
+                    </div>
+                </div>
+
+                <div class="success" id="success-feedback">
+                    <svg id="check-mark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <div class="desc">
+                        <h2>Success</h2>
+                        <p>Feedback has been sent</p>
+                    </div>
+                    <div class="reload-button">
+                        <a href="index.html" id="reload-btn">Close</a>
+                    </div>
+                </div>
+                <div class="failed" id="failed-feedback">
+                    <svg id="cross-mark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                            stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                            stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                    </svg>
+                    <div class="desc">
+                        <h2>Failed</h2>
+                        <p>Feedback failed to send, try again</p>
+                    </div>
+                    <div class="reload-button">
+                        <a href="index.html" id="reload-btn">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-1">
+        <div data-aos="fade-down" data-aos-duration="1000" class="header">
+            <a href="" class="spin"></a><img id="logo" src="assets/img/logo.png" alt="">
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1500" class="description">
+            <h1>IMAGINE A PLACE...</h1>
+            <p>...where you can say whatever you want, and the message is Anonymous, just by doing one click and then it
+                will be sent to various social media that are available on uSayit</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="2000" class="button">
+            <a href="Message.html" id="button">U Say It, Now!</a>
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="2000" class="platforms">
+            <h2>social media platforms</h3>
+
+                <div class="buttons">
+                    <a href="https://www.instagram.com/usayit.id/" target="_blank" id="instagram-btn"
+                        class="icon-">instagram</a>
+                    <a href="https://twitter.com/usayit_id" target="_blank" id="twitter-btn" class="icon-">twitter</a>
+                </div>
+        </div>
+    </div>
+
+    <div class="section-2">
+        <div class="content">
+            <div data-aos="fade-down" data-aos-duration="1000">
+                <h1>You can send messages such as</h1>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1000" class="animation">
+                <p id="textAnimation">Suggest</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-3">
+        <div class="content">
+            <div class="header">
+                <img data-aos="fade-down" data-aos-duration="1000" src="assets/img/keepsafe.png" alt="">
+            </div>
+            <div class="desc">
+                <p data-aos="fade-up" data-aos-duration="1000">We expected that users comply with the terms of service
+                    policy on each social media platform that we provide. To ensure safety on uSayit, we filter some
+                    words that are harsh, offensive, harmful or bullying. The system stores users personal data in case
+                    of a violation. Posts will also be deleted automatically by the system if include a violation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-4">
+        <div class="content">
+            <div class="header">
+                <img data-aos="fade-down" data-aos-duration="1000" src="assets/img/faq.png" alt="">
+            </div>
+
+            <ul class="faq-list">
+                <ul data-aos="fade-down" data-aos-duration="1000" class="q1">
+                    <li class="question">
+                        <img src="assets/img/question.png" alt="">
+                        <p>what does uSay!t mean?</p>
+                    </li>
+                    <li class="answer">
+                        <p>uSay!t or uSayit, you can pronounce it like "You Say It".</p>
+                    </li>
+                </ul>
+
+                <ul data-aos="fade-up" data-aos-duration="1000" class="q2">
+                    <li class="question">
+                        <img src="assets/img/question.png" alt="">
+                        <p>what's the purpose of uSay!t?</p>
+                    </li>
+                    <li class="answer">
+                        <p>we want to give users the freedom of speech whatever they want to convey through social
+                            media, the message is anonymous, and can be seen by the general public.</p>
+                    </li>
+                </ul>
+
+                <ul data-aos="fade-down" data-aos-duration="1000" class="q3">
+                    <li class="question">
+                        <img src="assets/img/question.png" alt="">
+                        <p>where's it available?</p>
+                    </li>
+                    <li class="answer">
+                        <p>for now, uSay!t is only intended for Indonesian netizens.</p>
+                    </li>
+                </ul>
+
+                <ul data-aos="fade-up" data-aos-duration="1000" class="q4">
+                    <li class="question">
+                        <img src="assets/img/question.png" alt="">
+                        <p>who built uSay!t?</p>
+                    </li>
+                    <li class="answer">
+                        <p>uSay!t is built by designer and engineer. you can see the developer profile on the credits
+                            page.</p>
+                        <div class="button">
+                            <a id="button">Credits Page</a>
+                        </div>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-5" id="feedback-section">
+        <div class="content">
+            <div data-aos="fade-up" data-aos-duration="1000" class="form">
+                <div class="header">
+                    <h1 data-aos="fade-down" data-aos-duration="1500">Send Feedback</h1>
+                    <p data-aos="fade-up" data-aos-duration="2000">send feedback to support uSayit to be better</p>
+                </div>
+                <div class="input">
+                    <input id="feedback-text" type="text" autocomplete="off" class="form-input"
+                        placeholder="Type your feedback here...">
+                    <input id="send-btn" type="button" class="form-send" value="Send">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="content">
+            <img src="assets/img/logo.png" alt="">
+            <p>© uSayit | All rights reserved</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        const textAnimation = () => {
+            const text = document.getElementById("textAnimation");
+            let textAnimList = ['Advice', 'Jokes', 'Asking', 'News', 'Confess', 'Quote', 'Gossip', 'Offend', 'Poem', 'Offer', 'Justify', 'Suggest'];
+            let curIndex = 1;
+            let totalIndex = textAnimList.length - 1;
+
+            setInterval(() => {
+                if (curIndex > totalIndex) {
+                    curIndex = 0;
+                }
+
+                text.innerHTML = textAnimList[curIndex];
+                curIndex++
+            }, 2000);
+        }
+
+        textAnimation();
+
+        let sendBtn = document.getElementById('send-btn');
+        let popupFeedback = document.getElementById('popup-feedback');
+        let loadingFeedback = document.getElementById('loading-feedback');
+        let successFeedback = document.getElementById('success-feedback');
+        let failedFeedback = document.getElementById('failed-feedback');
+
+        sendBtn.addEventListener('click', () => {
+            let feedbackTxt = document.getElementById('feedback-text').value;
+            let apiURI = 'https://usayit-api.herokuapp.com/api/sendFeedback?data='
+
+            let dataObj = {
+                text: feedbackTxt,
+            }
+            let dataEncode = btoa(JSON.stringify(dataObj));
+
+            let apiURIparam = apiURI + dataEncode;
+
+            popupFeedback.style.display = 'block';
+            loadingFeedback.style.display = 'block';
+
+            axios.post(apiURIparam).then(res => {
+                
+                if (res.data.errorCode !== -1) {
+                    loadingFeedback.style.display = 'none';
+                    failedFeedback.style.display = 'block';
+
+                    return;
+                }
+
+                loadingFeedback.style.display = 'none';
+                successFeedback.style.display = 'block';
+
+                return;
+            }).catch(err => {
+                loadingFeedback.style.display = 'none';
+                failedFeedback.style.display = 'block';
+            });
+
+            return;
+        });
+
+    </script>
+</body>
+
+</html>

@@ -482,4 +482,310 @@
         display: inline-block;
         vertical-align: top;
     }
+
+    
+/* ////////////////////////////////////////////////////////////////////////////////////// */
+
+    /* 
+
+        /////// Pop-Up Response Status ///////
+
+    */
+
+    .popup-feedback {
+        position: fixed;
+
+        width: 100%;
+        height: 100%;
+
+        /* border: red solid; */
+
+        background-color: rgba(0, 0, 0, 0.685);
+
+        display: none;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .popup-feedback .content {
+        height: 100%;
+    }
+
+    .popup-feedback .content .form {
+        width: 80vw;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        position: absolute;
+        border-radius: 30px;
+        transform: translate(-50%, -50%);
+
+    }
+
+
+
+    /* 
+    
+        >>> Loading 
+        
+    */
+
+    .popup-feedback .content .form .loading {
+        width: fit-content;
+
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        display: none;
+    }
+
+    .popup-feedback .content .form .loading .lds-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+
+    .popup-feedback .content .form .loading .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 5px solid #DC92FF;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #DC92FF transparent transparent transparent;
+    }
+
+    .popup-feedback .content .form .loading .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+    }
+
+    .popup-feedback .content .form .loading .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+
+    .popup-feedback .content .form .loading .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+
+    .popup-feedback .content .form .loading .desc {
+        width: fit-content;
+        padding-top: 10px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-feedback .content .form .loading .desc p {
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 13px;
+    }
+
+
+
+    /*
+
+        >>> Success Status 
+    
+    */
+
+    .popup-feedback .content .form .success {
+        padding-top: 30px;
+
+        display: none;
+    }
+
+    .popup-feedback .content .form .success #check-mark {
+        width: 80px;
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-feedback .content .form .success .path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 0;
+    }
+
+    .popup-feedback .content .form .success .path.circle {
+        -webkit-animation: dash 0.9s ease-in-out;
+        animation: dash 0.9s ease-in-out;
+    }
+
+    .popup-feedback .content .form .success .path.line {
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+        animation: dash 0.9s 0.35s ease-in-out forwards;
+    }
+
+    .popup-feedback .content .form .success .path.check {
+        stroke-dashoffset: -100;
+        -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+        animation: dash-check 0.9s 0.35s ease-in-out forwards;
+    }
+
+    .popup-feedback .content .form .success .desc {
+        padding-top: 20px;
+
+        text-align: center;
+
+        font-family: 'Lexend Deca', sans-serif;
+    }
+
+    .popup-feedback .content .form .success .desc p {
+        font-size: 12px;
+
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+.popup-feedback .content .form .success .reload-button {
+        width: fit-content;
+        /* border: #323437 solid; */
+
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-feedback .content .form .success .reload-button #reload-btn {
+        background: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);
+        color: white;
+
+        border: 3px #fff solid;
+        border-radius: 50px;
+
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+
+        text-shadow: 0px 0px 3px #DC92FF;
+        text-decoration: none;
+
+        padding: 7px 13px;
+
+        transition: 200ms ease-in-out;
+    }
+
+    .popup-feedback .content .form .success .reload-button #reload-btn:hover {
+        background: none;
+        text-shadow: none;
+
+        border: solid 3px transparent;
+
+        background-image: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);
+        background-origin: border-box;
+        box-shadow: 2px 1000px 1px #fff inset;
+
+        color: black;
+    }
+
+
+
+    /* 
+    
+        >>> Failed Status 
+        
+    */
+
+    .popup-feedback .content .form .failed {
+        padding-top: 30px;
+
+        display: none;
+    }
+
+    .popup-feedback .content .form .failed #cross-mark {
+        width: 80px;
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-feedback .content .form .failed .path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 0;
+    }
+
+    .popup-feedback .content .form .failed .path.circle {
+        -webkit-animation: dash 0.9s ease-in-out;
+        animation: dash 0.9s ease-in-out;
+    }
+
+    .popup-feedback .content .form .failed .path.line {
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+        animation: dash 0.9s 0.35s ease-in-out forwards;
+    }
+
+    .popup-feedback .content .form .failed .path.check {
+        stroke-dashoffset: -100;
+        -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+        animation: dash-check 0.9s 0.35s ease-in-out forwards;
+    }
+
+    .popup-feedback .content .form .failed .desc {
+        padding-top: 20px;
+
+        text-align: center;
+
+        font-family: 'Lexend Deca', sans-serif;
+    }
+
+    .popup-feedback .content .form .failed .desc p {
+        font-size: 12px;
+
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    
+    .popup-feedback .content .form .failed .reload-button {
+        width: fit-content;
+        /* border: #323437 solid; */
+
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-feedback .content .form .failed .reload-button #reload-btn {
+        background: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);
+        color: white;
+
+        border: 3px #fff solid;
+        border-radius: 50px;
+
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+
+        text-shadow: 0px 0px 3px #DC92FF;
+        text-decoration: none;
+
+        padding: 7px 13px;
+
+        transition: 200ms ease-in-out;
+    }
+
+    .popup-feedback .content .form .failed .reload-button #reload-btn:hover {
+        background: none;
+        text-shadow: none;
+
+        border: solid 3px transparent;
+
+        background-image: linear-gradient(153.43deg, #DC92FF 0%, #75FFF7 83.33%);
+        background-origin: border-box;
+        box-shadow: 2px 1000px 1px #fff inset;
+
+        color: black;
+    }
 }

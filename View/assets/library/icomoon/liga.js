@@ -25,12 +25,16 @@
     var icons;
     if (!supportsProperty('fontFeatureSettings')) {
         icons = {
+            'home': '&#xe900;',
+            'house': '&#xe900;',
+            'cross': '&#xea0f;',
+            'cancel': '&#xea0f;',
+            'checkmark': '&#xea10;',
+            'tick': '&#xea10;',
             'instagram': '&#xea92;',
             'brand12': '&#xea92;',
             'twitter': '&#xea96;',
             'brand16': '&#xea96;',
-            'youtube': '&#xea9d;',
-            'brand21': '&#xea9d;',
           '0': 0
         };
         delete icons['0'];
