@@ -54,13 +54,7 @@ class Instagram {
 
         const photo = __dirname + '/../../server_data/igFeed/' + timestamp + '.jpg';
 
-        let uploadData = await this.client.uploadPhoto({ photo, caption: setCaption, post: 'feed' }).then(() => {
-
-            console.log('\n(Instagram) Successfully upload new broadcast on feed');
-        
-        });
-
-        console.log(uploadData)
+        await this.client.uploadPhoto({ photo, caption: setCaption, post: 'feed' });
 
         return;
     }

@@ -13,9 +13,9 @@ class DiscordBot {
         return;
     }
 
-    login() {
+    async login() {
 
-        this.bot.login("OTk0OTcxNDQyNDQzNzE4Njk2.GSsZ5k.U3p_wQfOQxXIMtiPkELlG9UJkWeZ4o46EFD45o");
+        await this.bot.login("OTk0OTcxNDQyNDQzNzE4Njk2.GSsZ5k.U3p_wQfOQxXIMtiPkELlG9UJkWeZ4o46EFD45o");
         
         return;
     }

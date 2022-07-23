@@ -17,7 +17,7 @@ class ImageManipulation {
         let template = await jimp.read(__dirname + '/../resources/Template.png');
         template.composite(textFrame, 80, 180);
         
-        let image = await template.getBufferAsync(jimp.MIME_PNG)
+        let image = await template.getBase64Async(jimp.MIME_PNG)
 
         return image;
     }
