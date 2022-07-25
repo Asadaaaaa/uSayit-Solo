@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/Asadaaaaa/uSayit/blob/main/uSayit.png?raw=true" alt="Your image url" width="200" height="200">
+	<img src="uSayit.png" alt="Your image url" width="200" height="200">
 </div>
 
 <div align="center">
