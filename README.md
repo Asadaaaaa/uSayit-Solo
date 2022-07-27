@@ -15,8 +15,8 @@
 	</a>
 </div>
     <br><br>
-    <h3>Geboom available various platforms such as:</h3>
-    🔹 Instagram (<a href="https://www.instagram.com/geboom.id">Click Here</a>)
+    <h3>uSayit available various platforms such as:</h3>
+    🔹 Instagram (<a href="https://www.instagram.com/usayit.id">Click Here</a>)
     <br>
     🔹 Twitter (Coming Soon)
 
@@ -24,7 +24,7 @@
 	<h2>Information</h2>
 </div>
 
-<h3>Credits</h3>
+- Website: https://usayit.vercel.app <br>
 - Author: https://linktr.ee/mikailasada<br>
 
 © uSayit rights reserved
