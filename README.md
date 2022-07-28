@@ -2,6 +2,8 @@
 	<img src="uSayit.png" alt="Your image url" width="200" height="200">
 </div>
 
+<br><br>
+
 <div align="center">
 	<p>
 		uSayit was built to give netizens the freedom of speech whatever they want to convey through many social media platforms, the message is anonymous, and can be seen by the general public. <br>
@@ -19,6 +21,8 @@
     🔹 Instagram (<a href="https://www.instagram.com/usayit.id">Click Here</a>)
     <br>
     🔹 Twitter (Coming Soon)
+    
+<br><br>
 
 <div align="center">
 	<h2>Information</h2>
