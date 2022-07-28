@@ -26,8 +26,8 @@ class Instagram {
         }
 
         let cookieStore = new FileCookieStore(__dirname + '/../resources/cookies.json');
-        let username = 'usayit.id';
-        let password = 'otech@usayit08';
+        let username = '';
+        let password = '';
 
         this.client = new instagram({username, password, cookieStore});
 
