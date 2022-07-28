@@ -27,4 +27,4 @@
 - Website: https://usayit.vercel.app <br>
 - Author: https://linktr.ee/mikailasada<br>
 
-uSayit | 2022
+<p align="center">uSayit | 2022</p>
