@@ -1,7 +1,7 @@
 import {Client, Intents} from 'discord.js';
 
 class DiscordBot {
-    // Token: OTk0OTcxNDQyNDQzNzE4Njk2.GSsZ5k.U3p_wQfOQxXIMtiPkELlG9UJkWeZ4o46EFD45o
+    
     constructor() {
 
         this.bot = new Client({
@@ -15,7 +15,7 @@ class DiscordBot {
 
     async login() {
 
-        await this.bot.login("OTk0OTcxNDQyNDQzNzE4Njk2.GSsZ5k.U3p_wQfOQxXIMtiPkELlG9UJkWeZ4o46EFD45o");
+        await this.bot.login("");
         
         return;
     }
