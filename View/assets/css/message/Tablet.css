@@ -121,6 +121,8 @@
 
         padding: 8px 8px;
 
+        cursor: pointer;
+
         transition: 300ms ease-in-out;
     }
 
