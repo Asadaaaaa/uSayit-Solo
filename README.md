@@ -28,7 +28,7 @@
 	<h2>Information</h2>
 </div>
 
-- Website: https://usayit.vercel.app <br>
+- Website: https://usayit.asada.my.id <br>
 - Author: https://linktr.ee/mikailasada<br>
 
 <p align="center">uSayit | 2022</p>
